@@ -1,0 +1,331 @@
+root@raspberrypi:/opt/intel/openvino/tools/compile_tool# cd ~
+root@raspberrypi:~# ls
+Downloads  inference_engine_._samples_build
+root@raspberrypi:~# cd Downloads/
+root@raspberrypi:~/Downloads# ls
+BertDeployNCS
+root@raspberrypi:~/Downloads# cd BertDeployNCS/
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# cd movidius_models/
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# ls
+bert-tiny-uncased.bin  bert-tiny-uncased.xml
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# rm *.bin *.xml
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# ls
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# wget --no-check-certificate https://github.com/heath-smith/neuromorphic-computing/blob/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin?raw=true -O bert-tiny-uncased.bin
+--2022-10-28 03:49:53--  https://github.com/heath-smith/neuromorphic-computing/blob/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin?raw=true
+Resolving github.com (github.com)... 140.82.113.3
+Connecting to github.com (github.com)|140.82.113.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://github.com/heath-smith/neuromorphic-computing/raw/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin [following]
+--2022-10-28 03:49:53--  https://github.com/heath-smith/neuromorphic-computing/raw/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin
+Reusing existing connection to github.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin [following]
+--2022-10-28 03:49:54--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 17547976 (17M) [application/octet-stream]
+Saving to: ‘bert-tiny-uncased.bin’
+
+bert-tiny-uncased.bin            100%[=========================================================>]  16.73M  1.08MB/s    in 18s
+
+2022-10-28 03:50:12 (975 KB/s) - ‘bert-tiny-uncased.bin’ saved [17547976/17547976]
+
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.xml -O bert-tiny-uncased.xml
+--2022-10-28 03:50:49--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.xml
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 93969 (92K) [text/plain]
+Saving to: ‘bert-tiny-uncased.xml’
+
+bert-tiny-uncased.xml            100%[=========================================================>]  91.77K   464KB/s    in 0.2s
+
+2022-10-28 03:50:49 (464 KB/s) - ‘bert-tiny-uncased.xml’ saved [93969/93969]
+
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# ls
+bert-tiny-uncased.bin  bert-tiny-uncased.xml
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# cd ..
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# python benchmark_movidius.py movidius_models bert-tiny-uncased
+bash: python: command not found
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 33, in <module>
+    net = IENetwork(model=model_xml, weights=model_bin)
+  File "ie_api.pyx", line 1598, in openvino.inference_engine.ie_api.IENetwork.__cinit__
+TypeError: __cinit__() got an unexpected keyword argument 'weights'
+root@raspberrypi:~/Downloads/BertDeployNCS# python
+bash: python: command not found
+root@raspberrypi:~/Downloads/BertDeployNCS# python3
+Python 3.7.3 (default, Jan 22 2021, 20:04:44)
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+root@raspberrypi:~/Downloads/BertDeployNCS# python3
+Python 3.7.3 (default, Jan 22 2021, 20:04:44)
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from openvino.inference_engine import IENetwork
+>>> help(type(IENetwork))
+
+>>> help(IENetwork)
+
+>>> from openvino.inference_engine import IECore
+>>> help(IECore)
+
+>>> ie = IECore()
+>>> net = ie.read_network(model='./movidius_models/bert-tiny-uncased.xml', weights='./movidius_models/bert-tiny-uncased.bin')
+>>> exec_net = ie.load_network(network=net, device_name="MYRIAD", num_requests=2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "ie_api.pyx", line 413, in openvino.inference_engine.ie_api.IECore.load_network
+  File "ie_api.pyx", line 457, in openvino.inference_engine.ie_api.IECore.load_network
+RuntimeError: Check 'std::get<0>(valid)' failed at inference/src/ie_core.cpp:1537:
+InferenceEngine::Core::LoadNetwork doesn't support inputs having dynamic shapes. Use ov::Core::compile_model API instead. Dynamic inputs are :{ input:'input_ids,input_ids', shape={?,?}} { input:'attention_mask,attention_mask', shape={?,?}} { input:'token_type_ids,token_type_ids', shape={?,?}}
+
+>>> exec_net = ie.load_network(network=net, device_name="MYRIAD", num_requests=2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "ie_api.pyx", line 413, in openvino.inference_engine.ie_api.IECore.load_network
+  File "ie_api.pyx", line 457, in openvino.inference_engine.ie_api.IECore.load_network
+RuntimeError: Check 'std::get<0>(valid)' failed at inference/src/ie_core.cpp:1537:
+InferenceEngine::Core::LoadNetwork doesn't support inputs having dynamic shapes. Use ov::Core::compile_model API instead. Dynamic inputs are :{ input:'input_ids,input_ids', shape={?,?}} { input:'attention_mask,attention_mask', shape={?,?}} { input:'token_type_ids,token_type_ids', shape={?,?}}
+
+>>> exit()
+root@raspberrypi:~/Downloads/BertDeployNCS# python benchmark_movidius.py movidiu                                              s_models bert-tiny-uncasedconda activate env
+bash: python: command not found
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# cd movidius_models/
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# ls
+bert-tiny-uncased.bin  bert-tiny-uncased.xml
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# rm *.bin
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# rm *.xml
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# wget --no-check-certificate https://github.com/heath-smith/neuromorphic-computing/blob/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin?raw=true -O bert-tiny-uncased.bin
+--2022-10-28 04:43:45--  https://github.com/heath-smith/neuromorphic-computing/blob/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin?raw=true
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://github.com/heath-smith/neuromorphic-computing/raw/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin [following]
+--2022-10-28 04:43:46--  https://github.com/heath-smith/neuromorphic-computing/raw/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin
+Reusing existing connection to github.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin [following]
+--2022-10-28 04:43:46--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.bin
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 17547976 (17M) [application/octet-stream]
+Saving to: ‘bert-tiny-uncased.bin’
+
+bert-tiny-uncased.bin            100%[=========================================================>]  16.73M  1.23MB/s    in 14s
+
+2022-10-28 04:44:00 (1.16 MB/s) - ‘bert-tiny-uncased.bin’ saved [17547976/17547976]
+
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.xml -O bert-tiny-uncased.xml
+--2022-10-28 04:44:45--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/movidius_models/bert-tiny-uncased.xml
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 94146 (92K) [text/plain]
+Saving to: ‘bert-tiny-uncased.xml’
+
+bert-tiny-uncased.xml            100%[=========================================================>]  91.94K   477KB/s    in 0.2s
+
+2022-10-28 04:44:45 (477 KB/s) - ‘bert-tiny-uncased.xml’ saved [94146/94146]
+
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# cd ..
+root@raspberrypi:~/Downloads/BertDeployNCS# cd movidius_models/
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# ls
+bert-tiny-uncased.bin  bert-tiny-uncased.xml
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# python3
+Python 3.7.3 (default, Jan 22 2021, 20:04:44)
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from openvino.inference_engine import IECore
+>>> ie = IECore()
+>>> net = ie.read_network(model='./bert-tiny-uncased.xml', weights='./bert-tiny-uncased.bin')
+>>> exec_net = ie.load_network(network=net, device_name="MYRIAD", num_requests=2)
+>>> num_samples = 100
+>>> avg_time = 0
+>>> df = dataframes.createDataFrame(columnNames=["model_name", "avg inference time (ms)","alloc_time (ms)", "total_inference_time (s)", "load_time (ms)", "num_samples", "file_name"])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'dataframes' is not defined
+>>> import lightweight_dataframes as dataframes
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'lightweight_dataframes'
+>>> import ../lightweight_dataframes as dataframes
+  File "<stdin>", line 1
+    import ../lightweight_dataframes as dataframes
+           ^
+SyntaxError: invalid syntax
+>>> exit()
+root@raspberrypi:~/Downloads/BertDeployNCS/movidius_models# cd ..
+root@raspberrypi:~/Downloads/BertDeployNCS# python benchmark_movidius.py movidius_models bert-tiny-uncased
+bash: python: command not found
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 33, in <module>
+    net = IENetwork(model=model_xml, weights=model_bin)
+  File "ie_api.pyx", line 1598, in openvino.inference_engine.ie_api.IENetwork.__cinit__
+TypeError: __cinit__() got an unexpected keyword argument 'weights'
+root@raspberrypi:~/Downloads/BertDeployNCS# python3
+Python 3.7.3 (default, Jan 22 2021, 20:04:44)
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# rm benchmark_movidius.py
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py -O benchmark_movidius.py
+--2022-10-28 04:56:09--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3374 (3.3K) [text/plain]
+Saving to: ‘benchmark_movidius.py’
+
+benchmark_movidius.py            100%[=========================================================>]   3.29K  --.-KB/s    in 0.006s
+
+2022-10-28 04:56:10 (585 KB/s) - ‘benchmark_movidius.py’ saved [3374/3374]
+
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Found devices -->  ['CPU', 'MYRIAD']
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 48, in <module>
+    print('Inp1 Shape: ' + str(net.inputs[inp1].shape))
+AttributeError: 'openvino.inference_engine.ie_api.IENetwork' object has no attribute 'inputs'
+root@raspberrypi:~/Downloads/BertDeployNCS# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py -O benchmark_movidius.py
+--2022-10-28 04:57:05--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3374 (3.3K) [text/plain]
+Saving to: ‘benchmark_movidius.py’
+
+benchmark_movidius.py            100%[=========================================================>]   3.29K  --.-KB/s    in 0.004s
+
+2022-10-28 04:57:05 (887 KB/s) - ‘benchmark_movidius.py’ saved [3374/3374]
+
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Found devices -->  ['CPU', 'MYRIAD']
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 48, in <module>
+    print('Inp1 Shape: ' + str(net.inputs[inp1].shape))
+AttributeError: 'openvino.inference_engine.ie_api.IENetwork' object has no attribute 'inputs'
+root@raspberrypi:~/Downloads/BertDeployNCS# rm benchmark_movidius.py
+root@raspberrypi:~/Downloads/BertDeployNCS# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py -O benchmark_movidius.py
+--2022-10-28 04:57:26--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3374 (3.3K) [text/plain]
+Saving to: ‘benchmark_movidius.py’
+
+benchmark_movidius.py            100%[=========================================================>]   3.29K  --.-KB/s    in 0.02s
+
+2022-10-28 04:57:26 (169 KB/s) - ‘benchmark_movidius.py’ saved [3374/3374]
+
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Found devices -->  ['CPU', 'MYRIAD']
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 48, in <module>
+    print('Inp1 Shape: ' + str(net.inputs[inp1].shape))
+AttributeError: 'openvino.inference_engine.ie_api.IENetwork' object has no attribute 'inputs'
+root@raspberrypi:~/Downloads/BertDeployNCS# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py -O benchmark_movidius.py
+--2022-10-28 04:58:42--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3374 (3.3K) [text/plain]
+Saving to: ‘benchmark_movidius.py’
+
+benchmark_movidius.py            100%[=========================================================>]   3.29K  --.-KB/s    in 0.004s
+
+2022-10-28 04:58:43 (765 KB/s) - ‘benchmark_movidius.py’ saved [3374/3374]
+
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Found devices -->  ['CPU', 'MYRIAD']
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 48, in <module>
+    print('Inp1 Shape: ' + str(net.inputs[inp1].shape))
+AttributeError: 'openvino.inference_engine.ie_api.IENetwork' object has no attribute 'inputs'
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# rm __pycache__
+rm: cannot remove '__pycache__': Is a directory
+root@raspberrypi:~/Downloads/BertDeployNCS# rm -rf __pycache__
+root@raspberrypi:~/Downloads/BertDeployNCS# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py -O benchmark_movidius.py
+--2022-10-28 04:59:12--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3374 (3.3K) [text/plain]
+Saving to: ‘benchmark_movidius.py’
+
+benchmark_movidius.py            100%[=========================================================>]   3.29K  --.-KB/s    in 0.005s
+
+2022-10-28 04:59:12 (673 KB/s) - ‘benchmark_movidius.py’ saved [3374/3374]
+
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Found devices -->  ['CPU', 'MYRIAD']
+Traceback (most recent call last):
+  File "benchmark_movidius.py", line 48, in <module>
+    print('Inp1 Shape: ' + str(net.inputs[inp1].shape))
+AttributeError: 'openvino.inference_engine.ie_api.IENetwork' object has no attribute 'inputs'
+root@raspberrypi:~/Downloads/BertDeployNCS# rm benchmark_movidius.py
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# rm -rf __pycache__
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# wget --no-check-certificate https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py -O benchmark_movidius.py
+--2022-10-28 04:59:51--  https://raw.githubusercontent.com/heath-smith/neuromorphic-computing/main/BertDeployNCS/benchmark_movidius.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3374 (3.3K) [text/plain]
+Saving to: ‘benchmark_movidius.py’
+
+benchmark_movidius.py            100%[=========================================================>]   3.29K  --.-KB/s    in 0.004s
+
+2022-10-28 04:59:51 (760 KB/s) - ‘benchmark_movidius.py’ saved [3374/3374]
+
+root@raspberrypi:~/Downloads/BertDeployNCS# nano benchmark_movidius.py
+root@raspberrypi:~/Downloads/BertDeployNCS# sudo nano benchmark_movidius.py
+root@raspberrypi:~/Downloads/BertDeployNCS# python3 benchmark_movidius.py movidius_models bert-tiny-uncased
+Found devices -->  ['CPU', 'MYRIAD']
+Out name: 309
+bert-tiny-uncased
+Model Load Time is 100.52323341369629 (ms)
+Allocation Time is 50991.69373512268 (ms)
+Inference Time is 3.3931915760040283 (secs)
+Total Time is 54.485408544540405 (secs)
+Avg Time for one inference: 33.93191576004028 (ms)
+E: [global] [    294803] [python3] XLink_sem_wait:95     XLink_sem_inc(sem) method call failed with an error: -1
+E: [global] [    294808] [python3] XLinkResetRemote:263 can't wait dispatcherClosedSem
+
+root@raspberrypi:~/Downloads/BertDeployNCS# ls
+__pycache__  benchmark_movidius.py  bert-tiny-uncased_benchmark.csv  data  lightweight_dataframes.py  movidius_models
+root@raspberrypi:~/Downloads/BertDeployNCS# ^C
+root@raspberrypi:~/Downloads/BertDeployNCS# exit
+exit
+user@raspberrypi:~ $ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS       PORTS     NAMES
+095197b84c11   bd5521154637   "/usr/bin/entry.sh /…"   23 hours ago   Up 5 hours             eloquent_golick
+user@raspberrypi:~ $ exit
+logout
+Connection to 192.168.50.154 closed.
+(miniforge3)heathsmith@Heaths-MBP neuromorphic-computing %

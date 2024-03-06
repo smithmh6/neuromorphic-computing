@@ -1,0 +1,18 @@
+# image directories
+CK+/
+CK+_v2/
+Combined/
+FER-2013/
+JAFFE/
+
+# compressed datasets
+fer_2013.npz
+jaffe_nofear.npz
+jaffe.npz
+mnist_48.npz
+mnist.npz
+combined_48.npz
+ck_plus_48_v2.npz
+RAFDB.npz
+
+~$*

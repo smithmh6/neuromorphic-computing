@@ -1,0 +1,18 @@
+Quit container, but keep running:
+    ctrl-p then ctrl-q
+
+Start container shell:
+    docker exec -ti -u 0 <container-id> bash
+
+Start SSH Server:
+
+    eval "$(ssh-agent -s)"
+
+ Add SSH key:
+
+    ssh-add /root/.ssh/neurocomp
+
+Benchmark app:
+
+    python3 /opt/intel/openvino/deployment_tools/tools/benchmark_tool/benchmark_app.py -m /root/test_inference_graph.xml -d MYRIAD -api async -i /opt/intel/openvino/repos/neuromorphic-computing/datasets/benchmark_test.png -progress -b 1
+

@@ -1,0 +1,56 @@
+docker build . -t openvino-rpi
+(in docker file: FROM balenalib/raspberrypi3:buster)
+
+docker run -it --privileged -v /dev:/dev --network=host openvino-rpi /bin/bash
+
+apt-get update
+apt-get install apt-utils
+apt-get wget
+mkdir -p /opt/intel/openvino
+cd /opt/intel/openvino
+
+
+wget -c https://storage.openvinotoolkit.org/repositories/openvino/packages/2022.2/linux/l_openvino_toolkit_debian9_arm_2022.2.0.7713.af16ea1d79a_armhf.tgz
+
+tar xf l_openvino_toolkit_debian9_arm_2022.2.0.7713.af16ea1d79a_armhf.tgz --strip 1 -C /opt/intel/openvino
+
+apt-get install -y --no-install-recommends automake cmake cpio gcc g++ libatlas-base-dev libstdc++6 libtool libusb-1.0.0-dev lsb-release make python3-pip python3-numpy python3-scipy libgtk-3-0 pkg-config libavcodec-dev libavformat-dev libswscale-dev sudo udev unzip vim git
+
+rm -rf /var/lib/apt/lists/*
+
+sudo usermod -a -G users "$(whoami)"
+
+source /opt/intel/openvino/setupvars.sh
+
+cd /opt/intel/openvino/install_dependencies/
+
+sh install_NCS_udev_rules.sh
+
+echo "source /opt/intel/openvino/setupvars.sh" >> ~/.bashrc
+
+
+mkdir /root/Downloads
+
+cd /opt/intel/openvino/samples/c/
+./build_samples.sh
+
+cd /opt/intel/openvino/samples/cpp/
+./build_samples.sh
+
+wget --no-check-certificate https://storage.openvinotoolkit.org/repositories/open_model_zoo/2022.1/models_bin/3/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.bin -O /root/Downloads/person-vehicle-bike-detection-crossroad-0078.bin
+
+wget --no-check-certificate https://storage.openvinotoolkit.org/repositories/open_model_zoo/2022.1/models_bin/3/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.xml -O /root/Downloads/person-vehicle-bike-detection-crossroad-0078.xml
+
+wget --no-check-certificate https://cdn.pixabay.com/photo/2018/07/06/00/33/person-3519503_960_720.jpg -O /root/Downloads/walk.jpg
+
+
+cd /root/inference_engine_._samples_build/armv7l/Release/
+
+./benchmark_app -m ~/Downloads/person-vehicle-bike-detection-crossroad-0078.xml -i ~/Downloads/walk.jpg -d MYRIAD
+
+mkdir repos
+cd repos
+
+git clone https://github.com/heath-smith/neuromorphic-computing.git
+
+./benchmark_app -m ~/repos/neuromorphic-computing/neurocomp/test_inference_graph.xml -i ~/repos/neuromorphic-computing/datasets/benchmark_test.png -d MYRIAD

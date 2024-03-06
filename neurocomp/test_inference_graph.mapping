@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+<mapping>
+	<map>
+		<framework name="x" output_port_id="x:0" />
+		<IR name="x" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="x" output_port_id="x:0" />
+		<IR name="x" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="x" output_port_id="x:0" />
+		<IR name="x" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="x" output_port_id="x" />
+		<IR name="x" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="x" output_port_id="x" />
+		<IR name="x" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="x" output_port_id="x" />
+		<IR name="x" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/Conv2D" output_port_id="sequential/conv2d/Conv2D:0" />
+		<IR name="sequential/conv2d/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/Conv2D" output_port_id="sequential/conv2d/Conv2D:0" />
+		<IR name="sequential/conv2d/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/BiasAdd/Add" output_port_id="sequential/conv2d/BiasAdd:0" />
+		<IR name="sequential/conv2d/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/BiasAdd" output_port_id="sequential/conv2d/BiasAdd:0" />
+		<IR name="sequential/conv2d/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/Relu" output_port_id="sequential/conv2d/Relu:0" />
+		<IR name="sequential/conv2d/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d/Relu" output_port_id="sequential/conv2d/Relu:0" />
+		<IR name="sequential/conv2d/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d/AvgPool" output_port_id="sequential/average_pooling2d/AvgPool:0" />
+		<IR name="sequential/average_pooling2d/AvgPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d/AvgPool" output_port_id="sequential/average_pooling2d/AvgPool:0" />
+		<IR name="sequential/average_pooling2d/AvgPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d_1/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_1/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d_1/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_1/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/Conv2D" output_port_id="sequential/conv2d_1/Conv2D:0" />
+		<IR name="sequential/conv2d_1/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/Conv2D" output_port_id="sequential/conv2d_1/Conv2D:0" />
+		<IR name="sequential/conv2d_1/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d_1/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_1/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d_1/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_1/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/BiasAdd/Add" output_port_id="sequential/conv2d_1/BiasAdd:0" />
+		<IR name="sequential/conv2d_1/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/BiasAdd" output_port_id="sequential/conv2d_1/BiasAdd:0" />
+		<IR name="sequential/conv2d_1/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/Relu" output_port_id="sequential/conv2d_1/Relu:0" />
+		<IR name="sequential/conv2d_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_1/Relu" output_port_id="sequential/conv2d_1/Relu:0" />
+		<IR name="sequential/conv2d_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d_1/AvgPool" output_port_id="sequential/average_pooling2d_1/AvgPool:0" />
+		<IR name="sequential/average_pooling2d_1/AvgPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d_1/AvgPool" output_port_id="sequential/average_pooling2d_1/AvgPool:0" />
+		<IR name="sequential/average_pooling2d_1/AvgPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d_2/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_2/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d_2/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_2/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/Conv2D" output_port_id="sequential/conv2d_2/Conv2D:0" />
+		<IR name="sequential/conv2d_2/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/Conv2D" output_port_id="sequential/conv2d_2/Conv2D:0" />
+		<IR name="sequential/conv2d_2/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d_2/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_2/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d_2/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_2/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/BiasAdd/Add" output_port_id="sequential/conv2d_2/BiasAdd:0" />
+		<IR name="sequential/conv2d_2/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/BiasAdd" output_port_id="sequential/conv2d_2/BiasAdd:0" />
+		<IR name="sequential/conv2d_2/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/Relu" output_port_id="sequential/conv2d_2/Relu:0" />
+		<IR name="sequential/conv2d_2/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_2/Relu" output_port_id="sequential/conv2d_2/Relu:0" />
+		<IR name="sequential/conv2d_2/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d_2/AvgPool" output_port_id="sequential/average_pooling2d_2/AvgPool:0" />
+		<IR name="sequential/average_pooling2d_2/AvgPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d_2/AvgPool" output_port_id="sequential/average_pooling2d_2/AvgPool:0" />
+		<IR name="sequential/average_pooling2d_2/AvgPool" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d_3/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_3/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/Conv2D/ReadVariableOp" output_port_id="sequential/conv2d_3/Conv2D/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_3/Conv2D/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/Conv2D" output_port_id="sequential/conv2d_3/Conv2D:0" />
+		<IR name="sequential/conv2d_3/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/Conv2D" output_port_id="sequential/conv2d_3/Conv2D:0" />
+		<IR name="sequential/conv2d_3/Conv2D" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d_3/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_3/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/BiasAdd/ReadVariableOp" output_port_id="sequential/conv2d_3/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/conv2d_3/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/BiasAdd/Add" output_port_id="sequential/conv2d_3/BiasAdd:0" />
+		<IR name="sequential/conv2d_3/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/BiasAdd" output_port_id="sequential/conv2d_3/BiasAdd:0" />
+		<IR name="sequential/conv2d_3/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/Relu" output_port_id="sequential/conv2d_3/Relu:0" />
+		<IR name="sequential/conv2d_3/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/conv2d_3/Relu" output_port_id="sequential/conv2d_3/Relu:0" />
+		<IR name="sequential/conv2d_3/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/batch_normalization/FusedBatchNormV3/variance/Fused_Add_" output_port_id="sequential/batch_normalization/FusedBatchNormV3:0" />
+		<IR name="sequential/batch_normalization/FusedBatchNormV3/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/batch_normalization/FusedBatchNormV3" output_port_id="sequential/batch_normalization/FusedBatchNormV3:0" />
+		<IR name="sequential/batch_normalization/FusedBatchNormV3/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d_3/AvgPool/Transpose" output_port_id="sequential/average_pooling2d_3/AvgPool:0" />
+		<IR name="sequential/average_pooling2d_3/AvgPool/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/average_pooling2d_3/AvgPool" output_port_id="sequential/average_pooling2d_3/AvgPool:0" />
+		<IR name="sequential/average_pooling2d_3/AvgPool/Transpose" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/flatten/Const" output_port_id="sequential/flatten/Const:0" />
+		<IR name="sequential/flatten/Const" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="sequential/flatten/Const" output_port_id="sequential/flatten/Const:0" />
+		<IR name="sequential/flatten/Const" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="sequential/flatten/Reshape" output_port_id="sequential/flatten/Reshape:0" />
+		<IR name="sequential/flatten/Reshape" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/flatten/Reshape" output_port_id="sequential/flatten/Reshape:0" />
+		<IR name="sequential/flatten/Reshape" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense/MatMul/ReadVariableOp" output_port_id="sequential/dense/MatMul/ReadVariableOp:0" />
+		<IR name="sequential/dense/MatMul/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/MatMul/ReadVariableOp" output_port_id="sequential/dense/MatMul/ReadVariableOp:0" />
+		<IR name="sequential/dense/MatMul/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/MatMul" output_port_id="sequential/dense/MatMul:0" />
+		<IR name="sequential/dense/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense/MatMul" output_port_id="sequential/dense/MatMul:0" />
+		<IR name="sequential/dense/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense/BiasAdd/ReadVariableOp" output_port_id="sequential/dense/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/dense/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/BiasAdd/ReadVariableOp" output_port_id="sequential/dense/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/dense/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/BiasAdd/Add" output_port_id="sequential/dense/BiasAdd:0" />
+		<IR name="sequential/dense/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense/BiasAdd" output_port_id="sequential/dense/BiasAdd:0" />
+		<IR name="sequential/dense/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense/Relu" output_port_id="sequential/dropout/Identity:0" />
+		<IR name="sequential/dense/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dropout/Identity" output_port_id="sequential/dropout/Identity:0" />
+		<IR name="sequential/dense/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/Relu" output_port_id="sequential/dropout/Identity:0" />
+		<IR name="sequential/dense/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/Relu" output_port_id="sequential/dense/Relu:0" />
+		<IR name="sequential/dense/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dropout/Identity" output_port_id="sequential/dense/Relu:0" />
+		<IR name="sequential/dense/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense/Relu" output_port_id="sequential/dense/Relu:0" />
+		<IR name="sequential/dense/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/MatMul/ReadVariableOp" output_port_id="sequential/dense_1/MatMul/ReadVariableOp:0" />
+		<IR name="sequential/dense_1/MatMul/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/MatMul/ReadVariableOp" output_port_id="sequential/dense_1/MatMul/ReadVariableOp:0" />
+		<IR name="sequential/dense_1/MatMul/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/MatMul" output_port_id="sequential/dense_1/MatMul:0" />
+		<IR name="sequential/dense_1/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/MatMul" output_port_id="sequential/dense_1/MatMul:0" />
+		<IR name="sequential/dense_1/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/BiasAdd/ReadVariableOp" output_port_id="sequential/dense_1/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/dense_1/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/BiasAdd/ReadVariableOp" output_port_id="sequential/dense_1/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/dense_1/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/BiasAdd/Add" output_port_id="sequential/dense_1/BiasAdd:0" />
+		<IR name="sequential/dense_1/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/BiasAdd" output_port_id="sequential/dense_1/BiasAdd:0" />
+		<IR name="sequential/dense_1/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/Relu" output_port_id="sequential/dropout_1/Identity:0" />
+		<IR name="sequential/dense_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dropout_1/Identity" output_port_id="sequential/dropout_1/Identity:0" />
+		<IR name="sequential/dense_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/Relu" output_port_id="sequential/dropout_1/Identity:0" />
+		<IR name="sequential/dense_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/Relu" output_port_id="sequential/dense_1/Relu:0" />
+		<IR name="sequential/dense_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dropout_1/Identity" output_port_id="sequential/dense_1/Relu:0" />
+		<IR name="sequential/dense_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_1/Relu" output_port_id="sequential/dense_1/Relu:0" />
+		<IR name="sequential/dense_1/Relu" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/MatMul/ReadVariableOp" output_port_id="sequential/dense_2/MatMul/ReadVariableOp:0" />
+		<IR name="sequential/dense_2/MatMul/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/MatMul/ReadVariableOp" output_port_id="sequential/dense_2/MatMul/ReadVariableOp:0" />
+		<IR name="sequential/dense_2/MatMul/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/MatMul" output_port_id="sequential/dense_2/MatMul:0" />
+		<IR name="sequential/dense_2/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/MatMul" output_port_id="sequential/dense_2/MatMul:0" />
+		<IR name="sequential/dense_2/MatMul" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/BiasAdd/ReadVariableOp" output_port_id="sequential/dense_2/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/dense_2/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/BiasAdd/ReadVariableOp" output_port_id="sequential/dense_2/BiasAdd/ReadVariableOp:0" />
+		<IR name="sequential/dense_2/BiasAdd/ReadVariableOp" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/BiasAdd/Add" output_port_id="sequential/dense_2/BiasAdd:0" />
+		<IR name="sequential/dense_2/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/BiasAdd" output_port_id="sequential/dense_2/BiasAdd:0" />
+		<IR name="sequential/dense_2/BiasAdd/Add" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/Softmax" output_port_id="sequential/dense_2/Softmax:0" />
+		<IR name="sequential/dense_2/Softmax" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/Softmax" output_port_id="sequential/dense_2/Softmax:0" />
+		<IR name="sequential/dense_2/Softmax" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Identity" output_port_id="sequential/dense_2/Softmax:0" />
+		<IR name="sequential/dense_2/Softmax" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/Softmax" output_port_id="Identity:0" />
+		<IR name="sequential/dense_2/Softmax" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="sequential/dense_2/Softmax" output_port_id="Identity:0" />
+		<IR name="sequential/dense_2/Softmax" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="Identity" output_port_id="Identity:0" />
+		<IR name="sequential/dense_2/Softmax" output_port_id="1" />
+	</map>
+</mapping>
